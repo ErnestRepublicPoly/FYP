@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Round3</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_details">Details</string>
+    <string name="title_History">History</string>
+    <string name="title_Goals">Goals</string>
+    <string name="title_Graph">Graph</string>
+    <string name="W">"Weight: "</string>
+    <string name="H">"Height: "</string>
+    <string name="EYTRB">Enter Your Test Results Below</string>
+    <string name="M">Measurements</string>
+    <string name="S">Submit</string>
+    <string name="Goals">Your Goals</string>
+    <string name="DTAB">"Date to Achieve By: "</string>
+</resources>
