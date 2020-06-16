@@ -1,5 +1,7 @@
 package sg.edu.rp.c346.round3;
 
+import java.util.Date;
+
 public class dataEntry {
     private double SystolicPressure;
     private double DiastolicPressure;
@@ -9,9 +11,9 @@ public class dataEntry {
     private double Agility;
     private double Weight;
     private double Height;
+    private Date date;
 
-
-    public dataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double h) {
+    public dataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double Height, Date date ) {
         this.SystolicPressure = SystolicPressure;
         this.DiastolicPressure = DiastolicPressure;
         this.BodyFat = BodyFat;
@@ -20,6 +22,7 @@ public class dataEntry {
         this.Agility = Agility;
         this.Weight = Weight;
         this.Height = Height;
+        this.date = date;
     }
 
     public double getSystolicPressure() {
@@ -84,5 +87,13 @@ public class dataEntry {
 
     public void setHeight(double h) {
         this.Height = Height;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -1,6 +1,8 @@
 package sg.edu.rp.c346.round3;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class HomeFragment extends Fragment {
 
@@ -48,6 +57,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
+
+                    Date c = Calendar.getInstance().getTime();
+
                     double spDouble = Double.parseDouble(sp.getText().toString());
                     double dpDouble = Double.parseDouble(dp.getText().toString());
                     double bodyFatDouble = Double.parseDouble(bodyFat.getText().toString());
@@ -56,11 +68,26 @@ public class HomeFragment extends Fragment {
                     double agilityDouble = Double.parseDouble(agility.getText().toString());
                     double weightDouble = Double.parseDouble(weight.getText().toString());
                     double heightDouble = Double.parseDouble(height.getText().toString());
+                    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    final int i = prefs.getInt("increment", 1);
+                    dataEntry de = new dataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble, c);
 
-                    dataEntry de = new dataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble);
-                    dataRef.add(de);
-                    
-                    Toast.makeText(getContext(), "Entry Added", Toast.LENGTH_LONG).show();
+                   db.collection("/User/" + a + "/Data").document("Entry"+i).set(de).addOnSuccessListener(new OnSuccessListener<Void>() {
+                       @Override
+                       public void onSuccess(Void aVoid) {
+                           Toast.makeText(getContext(), "Entry Added Successfully", Toast.LENGTH_LONG).show();
+                           int newValue = i + 1;
+                           SharedPreferences.Editor prefEdit = prefs.edit();
+                           prefEdit.putInt("increment", newValue);
+                           prefEdit.commit();
+                       }
+                   }).addOnFailureListener(new OnFailureListener() {
+                       @Override
+                       public void onFailure(@NonNull Exception e) {
+                           Toast.makeText(getContext(), "Failed to add entry ", Toast.LENGTH_LONG).show();
+                       }
+                   });
+
                 } catch (NumberFormatException e) {
                     Toast.makeText(getContext(), "All Fields Have To Be Numbers", Toast.LENGTH_LONG).show();
                 }
