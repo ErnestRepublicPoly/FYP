@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "341885393140",
+    "firebase_url": "https://healthzonefyp.firebaseio.com",
+    "project_id": "healthzonefyp",
+    "storage_bucket": "healthzonefyp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341885393140:android:ea686e3e7fa62d6ef426a1",
+        "android_client_info": {
+          "package_name": "sg.edu.rp.c346.round3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341885393140-6c51rhtjb5adbrug517hfdoh6nsibol6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.edu.rp.c346.round3",
+            "certificate_hash": "ca7fc73e3d157371e4af18770f31ebd04676a1d9"
+          }
+        },
+        {
+          "client_id": "341885393140-bq1eqfjvt56lp4dracvagrh4erkrbup2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC05r9F0hb1ywcvtLSDy5mC9n41nAWbVFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341885393140-bq1eqfjvt56lp4dracvagrh4erkrbup2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
