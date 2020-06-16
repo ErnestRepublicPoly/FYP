@@ -46,7 +46,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/textViewBMI"
+            android:id="@+id/textViewDiastolicPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="17dp"

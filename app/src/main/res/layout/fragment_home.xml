@@ -8,60 +8,6 @@
     tools:context=".HomeFragment">
 
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/M"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="24sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textViewWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="@string/H" />
-
-        <EditText
-            android:id="@+id/EditTextWeight"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/et_custom"
-            android:hint="Height"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textViewHeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/W" />
-
-        <EditText
-            android:id="@+id/EditTextHeight"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/et_custom"
-            android:hint="Weight"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,39 +25,49 @@
             android:id="@+id/textViewBloodPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Blood \nPressure" />
+            android:layout_marginLeft="15dp"
+            android:text="Systolic Pressure"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/EditTextBloodPressure"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:background="@drawable/et_custom"
-            android:hint="Blood Pressure"
+            android:hint="Systolic Pressure"
             android:inputType="textPersonName"
             android:padding="15dp"
             android:textSize="15sp" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <TextView
-            android:id="@+id/textViewBMI"
+            android:id="@+id/textViewDiastolicPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="17dp"
-            android:text="BMI"
-            android:textSize="14sp" />
+            android:layout_marginLeft="15dp"
+            android:text="Diastolic Pressure"
+            android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editTextBMI"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
+            android:id="@+id/editTextDP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:background="@drawable/et_custom"
-            android:hint="BMI"
+            android:hint="Diastolic Pressure"
             android:inputType="textPersonName"
             android:padding="15dp"
             android:textSize="15sp" />
@@ -209,7 +165,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/S" />
