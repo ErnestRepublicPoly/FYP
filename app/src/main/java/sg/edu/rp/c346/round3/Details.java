@@ -11,26 +11,41 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class Details extends Fragment {
 
     private DetailsViewModel mViewModel;
 
+
     public static Details newInstance() {
         return new Details();
     }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.details_fragment, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(DetailsViewModel.class);
-        // TODO: Use the ViewModel
+        View root = inflater.inflate(R.layout.details_fragment, container, false);
+        ListView lv;
+        ArrayAdapter<InfoClass> aa;
+        lv = root.findViewById(R.id.lvInfo);
+
+
+        final ArrayList<InfoClass> currentInfo = new ArrayList<InfoClass>();
+        currentInfo.add(new InfoClass("Blood Pressure",R.drawable.bloodpressure));
+        currentInfo.add(new InfoClass("BMI",R.drawable.bmi));
+        currentInfo.add(new InfoClass("Body Fat",R.drawable.fat));
+        currentInfo.add(new InfoClass("Quad Power",R.drawable.legcurl));
+        currentInfo.add(new InfoClass("Rack Pull",R.drawable.rackpull));
+        currentInfo.add(new InfoClass("Agility",R.drawable.agility));
+
+        aa = new DetailsAdapter(getContext(),R.layout.details_info_design,currentInfo);
+        lv.setAdapter(aa);
+
+        return root;
     }
 
 }
