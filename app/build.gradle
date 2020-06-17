@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "sg.edu.rp.c346.round3"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
