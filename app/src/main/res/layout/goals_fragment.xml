@@ -26,21 +26,23 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textViewSP"
+            android:id="@+id/textViewW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Blood \nPressure" />
+            android:layout_marginRight="20dp"
+            android:text="Weight"
+            android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/TextViewWeightBloodPressure"
+            android:id="@+id/textViewWeight"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/et_custom"
-            android:hint="Blood Pressure"
+            android:hint="Weight"
             android:inputType="textPersonName"
             android:padding="15dp"
             android:textSize="15sp" />
@@ -77,7 +79,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Body Fat" />
+            android:text="Body Fat"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/TextViewBodyFatGoals"
@@ -96,7 +99,8 @@
             android:id="@+id/textViewQuadPower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quad \nPower" />
+            android:text="Quad \nPower"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/TextViewQuadPowerGoals"
@@ -122,7 +126,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Rack Pull" />
+            android:text="Rack Pull"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/TextViewRackPullGoals"
@@ -141,7 +146,8 @@
             android:id="@+id/textViewAgility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agility" />
+            android:text="Agility"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/TextViewAgilityGoals"
