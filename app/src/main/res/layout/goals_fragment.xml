@@ -30,7 +30,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/editTextWeight"
+            android:id="@+id/editTextWG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -57,7 +57,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/EditTextQPG"
+            android:id="@+id/editTextQPG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

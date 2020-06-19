@@ -20,11 +20,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-import sg.edu.rp.c346.round3.DataClasses.DataEntry;
+import sg.edu.rp.c346.round3.DataClasses.GoalEntry;
 import sg.edu.rp.c346.round3.R;
 
 public class GoalsFragment extends Fragment {
@@ -43,17 +46,12 @@ public class GoalsFragment extends Fragment {
         goalsViewModel = ViewModelProviders.of(this).get(GoalsViewModel.class);
         View root = inflater.inflate(R.layout.goals_fragment, container, false);
         /*db = FirebaseFirestore.getInstance();
-        dataRef = db.collection("/User/" + a + "/Data");
 
-        weight = root.findViewById(R.id.editTextWeight);
-        height = root.findViewById(R.id.editTextHeight);
-        sp = root.findViewById(R.id.editTextSP);
-        dp = root.findViewById(R.id.editTextDP);
-        bodyFat = root.findViewById(R.id.editTextBodyFat);
-        quadPower = root.findViewById(R.id.editTextQuadPower);
-        rackPull = root.findViewById(R.id.editTextRackPull);
-        agility = root.findViewById(R.id.editTextAgility);
-        submit = root.findViewById(R.id.buttonSubmit);
+        weight = root.findViewById(R.id.editTextWG);
+        quadPower = root.findViewById(R.id.editTextQPG);
+        rackPull = root.findViewById(R.id.editTextRPG);
+        agility = root.findViewById(R.id.editTextAG);
+        submit = root.findViewById(R.id.buttonGoalSubmit);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,22 +63,22 @@ public class GoalsFragment extends Fragment {
                     double rackPullDouble = Double.parseDouble(rackPull.getText().toString());
                     double agilityDouble = Double.parseDouble(agility.getText().toString());
                     double weightDouble = Double.parseDouble(weight.getText().toString());
-                    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
                     GoalEntry ge = new GoalEntry(quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, c);
+
+
+                    Map<String, Object> saveData = new HashMap<String, Object>();
+                    saveData.put("", quadPowerDouble);
+                    db.collection("Goals").document("Goals").set(saveData, SetOptions.merge());
 
                     db.collection("/User/" + a + "/Data").document("Entry" + i).set(de).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(getContext(), "Entry Added Successfully", Toast.LENGTH_LONG).show();
-                            int newValue = i + 1;
-                            SharedPreferences.Editor prefEdit = prefs.edit();
-                            prefEdit.putInt("increment", newValue);
-                            prefEdit.commit();
+                            Toast.makeText(getContext(), "Goals Set Successfully", Toast.LENGTH_LONG).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getContext(), "Failed to add entry ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "Failed to set Goals ", Toast.LENGTH_LONG).show();
                         }
                     });
                 } catch (NumberFormatException e) {
