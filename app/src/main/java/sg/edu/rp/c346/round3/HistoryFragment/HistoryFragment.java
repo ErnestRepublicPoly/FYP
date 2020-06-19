@@ -1,7 +1,6 @@
 package sg.edu.rp.c346.round3.HistoryFragment;
 
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
