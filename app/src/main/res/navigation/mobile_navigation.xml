@@ -9,13 +9,12 @@
         android:id="@+id/navigation_home"
         android:name="sg.edu.rp.c346.round3.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/entry_fragment" />
 
     <fragment
-        android:id="@+id/navigation_Graph"
-        android:name="sg.edu.rp.c346.round3.Graphs"
-        android:label="@string/title_Graph"
-        tools:layout="@layout/goals_fragment" />
+        android:id="@+id/navigation_entry"
+        android:name="sg.edu.rp.c346.round3.EntryFragment"
+        android:label="Entry" />
 
     <fragment
         android:id="@+id/navigation_Details"
