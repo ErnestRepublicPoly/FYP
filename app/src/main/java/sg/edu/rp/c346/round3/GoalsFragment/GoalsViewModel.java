@@ -1,4 +1,4 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.GoalsFragment;
 
 import androidx.lifecycle.ViewModel;
 

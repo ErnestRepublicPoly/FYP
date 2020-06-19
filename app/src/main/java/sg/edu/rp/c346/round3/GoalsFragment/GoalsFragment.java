@@ -1,4 +1,4 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.GoalsFragment;
 
 import androidx.lifecycle.ViewModelProviders;
 
@@ -12,24 +12,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class History extends Fragment {
+import sg.edu.rp.c346.round3.R;
 
-    private HistoryViewModel mViewModel;
+public class GoalsFragment extends Fragment {
 
-    public static History newInstance() {
-        return new History();
+    private GoalsViewModel mViewModel;
+
+    public static GoalsFragment newInstance() {
+        return new GoalsFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.history_fragment, container, false);
+        return inflater.inflate(R.layout.goals_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(GoalsViewModel.class);
         // TODO: Use the ViewModel
     }
 

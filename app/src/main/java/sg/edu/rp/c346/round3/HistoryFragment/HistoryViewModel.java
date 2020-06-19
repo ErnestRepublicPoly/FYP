@@ -1,4 +1,4 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.HistoryFragment;
 
 import androidx.lifecycle.ViewModel;
 

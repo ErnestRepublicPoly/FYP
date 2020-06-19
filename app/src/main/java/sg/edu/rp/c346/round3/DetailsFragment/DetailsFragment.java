@@ -1,11 +1,10 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.DetailsFragment;
 
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,13 +15,16 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class Details extends Fragment {
+import sg.edu.rp.c346.round3.InfoClass;
+import sg.edu.rp.c346.round3.R;
+
+public class DetailsFragment extends Fragment {
 
     private DetailsViewModel mViewModel;
 
 
-    public static Details newInstance() {
-        return new Details();
+    public static DetailsFragment newInstance() {
+        return new DetailsFragment();
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,

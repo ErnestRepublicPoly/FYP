@@ -1,16 +1,16 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.EntryFragment;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class EntryViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public EntryViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is entry fragment");
     }
 
     public LiveData<String> getText() {

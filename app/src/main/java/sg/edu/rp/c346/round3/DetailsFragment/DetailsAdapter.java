@@ -1,4 +1,4 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.DetailsFragment;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import sg.edu.rp.c346.round3.InfoClass;
+import sg.edu.rp.c346.round3.R;
 
 public class DetailsAdapter extends ArrayAdapter<InfoClass> {
     private ArrayList<InfoClass> currInfo;

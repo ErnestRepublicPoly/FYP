@@ -7,30 +7,30 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="sg.edu.rp.c346.round3.HomeFragment"
+        android:name="sg.edu.rp.c346.round3.HomeFragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/entry_fragment" />
 
     <fragment
         android:id="@+id/navigation_entry"
-        android:name="sg.edu.rp.c346.round3.EntryFragment"
+        android:name="sg.edu.rp.c346.round3.EntryFragment.EntryFragment"
         android:label="Entry" />
 
     <fragment
         android:id="@+id/navigation_Details"
-        android:name="sg.edu.rp.c346.round3.Details"
+        android:name="sg.edu.rp.c346.round3.DetailsFragment.DetailsFragment"
         android:label="@string/title_details"
         tools:layout="@layout/details_fragment" />
 
     <fragment
         android:id="@+id/navigation_goals"
-        android:name="sg.edu.rp.c346.round3.Goals"
+        android:name="sg.edu.rp.c346.round3.GoalsFragment.GoalsFragment"
         android:label="@string/title_Goals"
         tools:layout="@layout/goals_fragment" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="sg.edu.rp.c346.round3.History"
+        android:name="sg.edu.rp.c346.round3.HistoryFragment.HistoryFragment"
         android:label="@string/title_History"
         tools:layout="@layout/history_fragment" />
 </navigation>

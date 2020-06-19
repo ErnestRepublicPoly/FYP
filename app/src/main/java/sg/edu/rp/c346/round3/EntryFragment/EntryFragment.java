@@ -1,4 +1,4 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.EntryFragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import sg.edu.rp.c346.round3.R;
+import sg.edu.rp.c346.round3.dataEntry;
 
 public class EntryFragment extends Fragment {
 
