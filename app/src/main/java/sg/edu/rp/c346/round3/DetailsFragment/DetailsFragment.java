@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import sg.edu.rp.c346.round3.InfoClass;
+import sg.edu.rp.c346.round3.DataClasses.InfoClass;
 import sg.edu.rp.c346.round3.R;
 
 public class DetailsFragment extends Fragment {

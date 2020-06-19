@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import sg.edu.rp.c346.round3.InfoClass;
+import sg.edu.rp.c346.round3.DataClasses.InfoClass;
 import sg.edu.rp.c346.round3.R;
 
 public class DetailsAdapter extends ArrayAdapter<InfoClass> {

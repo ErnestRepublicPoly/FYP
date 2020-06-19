@@ -1,8 +1,8 @@
-package sg.edu.rp.c346.round3;
+package sg.edu.rp.c346.round3.DataClasses;
 
 import java.util.Date;
 
-public class dataEntry {
+public class DataEntry {
     private double SystolicPressure;
     private double DiastolicPressure;
     private double BodyFat;
@@ -13,7 +13,7 @@ public class dataEntry {
     private double Height;
     private Date date;
 
-    public dataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double Height, Date date ) {
+    public DataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double Height, Date date ) {
         this.SystolicPressure = SystolicPressure;
         this.DiastolicPressure = DiastolicPressure;
         this.BodyFat = BodyFat;

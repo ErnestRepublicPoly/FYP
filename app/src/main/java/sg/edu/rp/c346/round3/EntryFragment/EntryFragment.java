@@ -23,7 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import sg.edu.rp.c346.round3.R;
-import sg.edu.rp.c346.round3.dataEntry;
+import sg.edu.rp.c346.round3.DataClasses.DataEntry;
 
 public class EntryFragment extends Fragment {
 
@@ -71,7 +71,7 @@ public class EntryFragment extends Fragment {
                     double heightDouble = Double.parseDouble(height.getText().toString());
                     final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
                     final int i = prefs.getInt("increment", 1);
-                    dataEntry de = new dataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble, c);
+                    DataEntry de = new DataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble, c);
 
                    db.collection("/User/" + a + "/Data").document("Entry"+i).set(de).addOnSuccessListener(new OnSuccessListener<Void>() {
                        @Override
