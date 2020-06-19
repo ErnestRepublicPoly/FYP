@@ -30,7 +30,7 @@ import sg.edu.rp.c346.round3.R;
 public class GoalsFragment extends Fragment {
 
     private GoalsViewModel goalsViewModel;
-    EditText weight, height, sp, dp, bodyFat, quadPower, rackPull, agility;
+    EditText weight, quadPower, rackPull, agility;
     Button submit;
     String a = "GtoqSX78uQUAwarX3wpR";
 
@@ -61,17 +61,12 @@ public class GoalsFragment extends Fragment {
                 try {
                     Date c = Calendar.getInstance().getTime();
 
-                    double spDouble = Double.parseDouble(sp.getText().toString());
-                    double dpDouble = Double.parseDouble(dp.getText().toString());
-                    double bodyFatDouble = Double.parseDouble(bodyFat.getText().toString());
                     double quadPowerDouble = Double.parseDouble(quadPower.getText().toString());
                     double rackPullDouble = Double.parseDouble(rackPull.getText().toString());
                     double agilityDouble = Double.parseDouble(agility.getText().toString());
                     double weightDouble = Double.parseDouble(weight.getText().toString());
-                    double heightDouble = Double.parseDouble(height.getText().toString());
                     final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-                    final int i = prefs.getInt("increment", 1);
-                    DataEntry de = new DataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble, c);
+                    GoalEntry ge = new GoalEntry(quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, c);
 
                     db.collection("/User/" + a + "/Data").document("Entry" + i).set(de).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

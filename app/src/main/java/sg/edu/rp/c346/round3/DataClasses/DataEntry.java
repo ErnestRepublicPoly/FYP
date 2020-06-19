@@ -25,6 +25,7 @@ public class DataEntry {
         this.date = date;
     }
 
+
     public double getSystolicPressure() {
         return SystolicPressure;
     }
