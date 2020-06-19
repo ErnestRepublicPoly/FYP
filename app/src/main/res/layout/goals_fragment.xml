@@ -84,8 +84,8 @@
             android:text="Rack Pull"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/TextViewRackPullGoals"
+        <EditText
+            android:id="@+id/editTextRPG"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
@@ -105,8 +105,8 @@
             android:text="Agility"
             android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/TextViewAG"
+        <EditText
+            android:id="@+id/editTextAG"
             android:layout_width="125dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
