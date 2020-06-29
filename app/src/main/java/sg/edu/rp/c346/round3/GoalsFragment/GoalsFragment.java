@@ -1,15 +1,10 @@
 package sg.edu.rp.c346.round3.GoalsFragment;
 
 import androidx.lifecycle.ViewModelProviders;
-
 import android.app.DatePickerDialog;
-import android.nfc.FormatException;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,23 +13,17 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
+import com.google.firebase.firestore.SetOptions;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-import sg.edu.rp.c346.round3.DataClasses.GoalEntry;
 import sg.edu.rp.c346.round3.R;
 
 public class GoalsFragment extends Fragment {
@@ -49,7 +38,6 @@ public class GoalsFragment extends Fragment {
 
     Date d;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, final Bundle savedInstanceState) {
         goalsViewModel = ViewModelProviders.of(this).get(GoalsViewModel.class);
@@ -62,6 +50,24 @@ public class GoalsFragment extends Fragment {
         rackPull = root.findViewById(R.id.editTextRPG);
         agility = root.findViewById(R.id.editTextAG);
         submit = root.findViewById(R.id.buttonGoalSubmit);
+
+        db.collection("/User/" + a + "/Goals").document("Goals").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String fillAgility = String.valueOf(documentSnapshot.getDouble("agility"));
+                String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
+                String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
+                String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
+                Date d = documentSnapshot.getDate("date");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String formatedDate = sdf.format(d);
+                achieveDate.setText("" + formatedDate);
+                weight.setText("" + fillWeight);
+                quadPower.setText("" + fillQuadPower);
+                rackPull.setText("" + fillRackPull);
+                agility.setText("" + fillAgility);
+            }
+        });
 
         achieveDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,52 +96,51 @@ public class GoalsFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try{
+                    Double updatedAgility = Double.parseDouble(agility.getText().toString());
+                    Map<String, Object> saveData = new HashMap<String, Object>();
+                    saveData.put("agility", updatedAgility);
+                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
+                }catch (NumberFormatException e){
+                    Toast.makeText(getContext(), "Agility needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                }
+
                 try {
+                    Double updatedQuadPower = Double.parseDouble(quadPower.getText().toString());
+                    Map<String, Object> saveData = new HashMap<String, Object>();
+                    saveData.put("quadPower", updatedQuadPower);
+                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
+                }catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Quad Power needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                }
 
-                    double quadPowerDouble = Double.parseDouble(quadPower.getText().toString());
-                    double rackPullDouble = Double.parseDouble(rackPull.getText().toString());
-                    double agilityDouble = Double.parseDouble(agility.getText().toString());
-                    double weightDouble = Double.parseDouble(weight.getText().toString());
-                    GoalEntry ge = new GoalEntry(quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, d);
+                try {
+                    Double updatedRackPull = Double.parseDouble(rackPull.getText().toString());
+                    Map<String, Object> saveData = new HashMap<String, Object>();
+                    saveData.put("rackPull", updatedRackPull);
+                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
+                }catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Rack Pull needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                }
 
-                    db.collection("/User/" + a + "/Goals").document("Goals").set(ge).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(getContext(), "Goals Set Successfully", Toast.LENGTH_LONG).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getContext(), "Failed to set Goals ", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "All Fields Have To Be Numbers", Toast.LENGTH_LONG).show();
+                try {
+                    Double updatedWeight = Double.parseDouble(weight.getText().toString());
+                    Map<String, Object> saveData = new HashMap<String, Object>();
+                    saveData.put("weight", updatedWeight);
+                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
+                }catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Weight needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                }
+
+                try {
+                    Map<String, Object> saveData = new HashMap<String, Object>();
+                    saveData.put("date", d);
+                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
+                }catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Date is not set", Toast.LENGTH_LONG).show();
                 }
             }
         });
         return root;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        db.collection("/User/" + a + "/Goals").document("Goals").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String fillAgility = String.valueOf(documentSnapshot.getDouble("agility"));
-                String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
-                String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
-                String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
-                Date d = documentSnapshot.getDate("date");
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                String formatedDate = sdf.format(d);
-                achieveDate.setText("" + formatedDate);
-                weight.setText("" + fillWeight);
-                quadPower.setText("" + fillQuadPower);
-                rackPull.setText("" + fillRackPull);
-                agility.setText("" + fillAgility);
-            }
-        });
     }
 }
