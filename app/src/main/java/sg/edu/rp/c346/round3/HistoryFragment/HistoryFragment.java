@@ -60,8 +60,19 @@ public class HistoryFragment extends Fragment {
                         Date dates = document.getTimestamp("date").toDate();
                         SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy");
                         String format = sfd.format(dates);
+                        DataEntry newObj = new DataEntry(Double.parseDouble(document.get("systolicPressure").toString()),
+                                Double.parseDouble(document.get("diastolicPressure").toString()),
+                                Double.parseDouble(document.get("bodyFat").toString()),
+                                Double.parseDouble(document.get("quadPower").toString()),
+                                Double.parseDouble(document.get("rackPull").toString()),
+                                Double.parseDouble(document.get("agility").toString()),
+                                Double.parseDouble(document.get("weight").toString()),
+                                Double.parseDouble(document.get("height").toString()),
+                                dates
+                        );
+
                         values.add(format);
-                        entries.add(document.toObject(DataEntry.class));
+                        entries.add(newObj);
                     }
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, values);
                     listView.setAdapter(adapter);
