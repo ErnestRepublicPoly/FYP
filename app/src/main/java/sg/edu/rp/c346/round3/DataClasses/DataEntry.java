@@ -1,8 +1,9 @@
 package sg.edu.rp.c346.round3.DataClasses;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DataEntry {
+public class DataEntry implements Serializable {
     private double SystolicPressure;
     private double DiastolicPressure;
     private double BodyFat;
@@ -12,6 +13,9 @@ public class DataEntry {
     private double Weight;
     private double Height;
     private Date date;
+
+    public DataEntry() {
+    }
 
     public DataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double Height, Date date ) {
         this.SystolicPressure = SystolicPressure;
