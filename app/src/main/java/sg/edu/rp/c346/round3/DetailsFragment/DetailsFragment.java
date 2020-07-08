@@ -2,6 +2,7 @@ package sg.edu.rp.c346.round3.DetailsFragment;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -46,6 +48,15 @@ public class DetailsFragment extends Fragment {
 
         aa = new DetailsAdapter(getContext(),R.layout.details_info_design,currentInfo);
         lv.setAdapter(aa);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent toInfo = new Intent(getContext(),InfoActivity.class);
+                toInfo.putExtra("position", position);
+                startActivity(toInfo);
+            }
+        });
 
         return root;
     }
