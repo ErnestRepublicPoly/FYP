@@ -1,6 +1,7 @@
 package sg.edu.rp.c346.round3.EntryFragment;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -41,6 +42,7 @@ public class EntryFragment extends Fragment {
                              ViewGroup container, final Bundle savedInstanceState) {
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel.class);
         View root = inflater.inflate(R.layout.entry_fragment, container, false);
+
         db = FirebaseFirestore.getInstance();
         dataRef = db.collection("/User/" + a + "/Data");
 

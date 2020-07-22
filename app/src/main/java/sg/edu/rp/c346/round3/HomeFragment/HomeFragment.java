@@ -1,5 +1,6 @@
 package sg.edu.rp.c346.round3.HomeFragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
