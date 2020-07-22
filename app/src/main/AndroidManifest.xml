@@ -19,5 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailsFragment.InfoActivity" />
+        <activity android:name=".HistoryDetails" />
     </application>
 </manifest>
