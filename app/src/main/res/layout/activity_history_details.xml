@@ -23,7 +23,7 @@
             android:id="@+id/textViewHistoryTitleH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="10sp"
             android:text="Height"
             android:textSize="16sp" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/textViewHistoryTitleW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="10sp"
             android:text="Weight;"
             android:textSize="16sp" />
 
@@ -67,7 +67,7 @@
             android:id="@+id/textViewHistoryTitleA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="10sp"
             android:text="Agility"
             android:textSize="16sp" />
 
@@ -89,7 +89,7 @@
             android:id="@+id/textViewHistoryTitleB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="10sp"
             android:text="Body Fat"
             android:textSize="16sp" />
 
@@ -111,7 +111,7 @@
             android:id="@+id/textViewHistoryTitleQP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="10sp"
             android:text="Quad Power"
             android:textSize="16sp" />
 
@@ -133,7 +133,7 @@
             android:id="@+id/textViewHistoryTitleRP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginRight="10sp"
             android:text="Rack Pull"
             android:textSize="16sp" />
 
