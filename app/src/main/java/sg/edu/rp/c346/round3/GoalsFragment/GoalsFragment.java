@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -32,9 +34,10 @@ public class GoalsFragment extends Fragment {
     EditText weight, quadPower, rackPull, agility;
     TextView achieveDate;
     Button submit;
-    String a = "GtoqSX78uQUAwarX3wpR";
+    String a = "";
 
     FirebaseFirestore db;
+    FirebaseAuth fbAuth;
 
     Date d;
 
@@ -43,6 +46,10 @@ public class GoalsFragment extends Fragment {
         goalsViewModel = ViewModelProviders.of(this).get(GoalsViewModel.class);
         View root = inflater.inflate(R.layout.goals_fragment, container, false);
         db = FirebaseFirestore.getInstance();
+
+        fbAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = fbAuth.getCurrentUser();
+        a = user.getUid();
 
         achieveDate = root.findViewById(R.id.textViewDate);
         weight = root.findViewById(R.id.editTextWG);
@@ -54,18 +61,20 @@ public class GoalsFragment extends Fragment {
         db.collection("/User/" + a + "/Goals").document("Goals").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String fillAgility = String.valueOf(documentSnapshot.getDouble("agility"));
-                String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
-                String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
-                String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
-                Date d = documentSnapshot.getDate("date");
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                String formatedDate = sdf.format(d);
-                achieveDate.setText("" + formatedDate);
-                weight.setText("" + fillWeight);
-                quadPower.setText("" + fillQuadPower);
-                rackPull.setText("" + fillRackPull);
-                agility.setText("" + fillAgility);
+                if(documentSnapshot.exists()) {
+                    String fillAgility = String.valueOf(documentSnapshot.getDouble("agility"));
+                    String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
+                    String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
+                    String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
+                    Date d = documentSnapshot.getDate("date");
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                    String formatedDate = sdf.format(d);
+                    achieveDate.setText("" + formatedDate);
+                    weight.setText("" + fillWeight);
+                    quadPower.setText("" + fillQuadPower);
+                    rackPull.setText("" + fillRackPull);
+                    agility.setText("" + fillAgility);
+                }
             }
         });
 

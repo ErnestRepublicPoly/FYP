@@ -16,6 +16,8 @@ import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -33,11 +35,12 @@ public class HistoryFragment extends Fragment {
 
     private HistoryViewModel mViewModel;
     ListView listView;
-    String a = "GtoqSX78uQUAwarX3wpR";
+    String a = "";
     ArrayList<String> values;
     ArrayList<DataEntry> entries;
 
     FirebaseFirestore db;
+    FirebaseAuth fbAuth;
 
     public static HistoryFragment newInstance() {
         return new HistoryFragment();
@@ -48,6 +51,11 @@ public class HistoryFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.history_fragment, container, false);
         listView = root.findViewById(R.id.lvHistory);
+
+        fbAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = fbAuth.getCurrentUser();
+        a = user.getUid();
+
         db = FirebaseFirestore.getInstance();
         values = new ArrayList<>();
         entries = new ArrayList<>();

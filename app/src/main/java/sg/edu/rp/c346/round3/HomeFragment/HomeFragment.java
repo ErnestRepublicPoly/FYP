@@ -2,13 +2,18 @@ package sg.edu.rp.c346.round3.HomeFragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,10 +32,11 @@ import sg.edu.rp.c346.round3.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    String a = "GtoqSX78uQUAwarX3wpR";
+    String a = "";
     FirebaseFirestore db;
-    TextView dashSystolic, dashDiastolic, dashFat, dashRack, dashQuad, dashAgility, dashWeight, dashHeight;
+    TextView dashSystolic, dashDiastolic, dashFat, dashRack, dashQuad, dashAgility, dashWeight, dashHeight, tvVerification;
     ArrayList<DataEntry> entries;
+    FirebaseAuth fbAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, final Bundle savedInstanceState) {
@@ -48,7 +54,34 @@ public class HomeFragment extends Fragment {
         dashAgility = root.findViewById(R.id.tvDashAgility);
         dashHeight = root.findViewById(R.id.tvDashHeight);
         dashWeight = root.findViewById(R.id.tvDashWeight);
+        tvVerification = root.findViewById(R.id.textViewVerification);
 
+        fbAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = fbAuth.getCurrentUser();
+        a = user.getUid();
+
+        if(!user.isEmailVerified()){
+            tvVerification.setVisibility(View.VISIBLE);
+        }
+
+        tvVerification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("verification", "Successful");
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("verification", "Unsuccessful: " + e.getMessage());
+                    }
+                });
+            }
+        });
+/*
         db.collection("/User/" + a + "/Data").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull final Task<QuerySnapshot> task) {
@@ -81,7 +114,7 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
-
+*/
         return root;
     }
 }

@@ -1,9 +1,14 @@
 package sg.edu.rp.c346.round3;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,6 +32,23 @@ public class Main2Activity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.SignOut){
+            FirebaseAuth.getInstance().signOut();
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

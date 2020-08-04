@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -37,17 +39,22 @@ public class EntryFragment extends Fragment {
     private EntryViewModel entryViewModel;
     EditText weight, height, sp, dp, bodyFat, quadPower, rackPull, agility;
     Button submit;
-    String a = "GtoqSX78uQUAwarX3wpR";
+    String a = "";
     int count = 0;
 
     FirebaseFirestore db;
     CollectionReference dataRef;
+    FirebaseAuth fbAuth;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, final Bundle savedInstanceState) {
         entryViewModel = ViewModelProviders.of(this).get(EntryViewModel.class);
         View root = inflater.inflate(R.layout.entry_fragment, container, false);
+
+        fbAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = fbAuth.getCurrentUser();
+        a = user.getUid();
 
         db = FirebaseFirestore.getInstance();
         dataRef = db.collection("/User/" + a + "/Data");

@@ -13,4 +13,14 @@
     <string name="S">Submit</string>
     <string name="Goals">Your Goals</string>
     <string name="DTAB">"Date to Achieve By: "</string>
+
+    <string-array name="Gender">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+
+    <string-array name="Position">
+        <item>student</item>
+        <item>staff</item>
+    </string-array>
 </resources>

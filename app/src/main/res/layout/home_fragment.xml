@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
-
     >
+
+    <TextView
+        android:id="@+id/textViewVerification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15sp"
+        android:text="Email not verified. Click here to resend verification email"
+        android:textAlignment="center"
+        android:textColor="#FA0707"
+        android:textSize="12sp"
+        android:visibility="gone" />
 
     <ScrollView
         android:layout_width="match_parent"
