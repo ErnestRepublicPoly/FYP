@@ -55,8 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        if(fbAuth.getCurrentUser() != null){
-            Intent i =  new Intent(getApplicationContext(), Main2Activity.class);
+        if (fbAuth.getCurrentUser() != null) {
+            Intent i = new Intent(getApplicationContext(), Main2Activity.class);
             startActivity(i);
         }
 
@@ -67,19 +67,19 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString().trim();
                 final String strAge = etAge.getText().toString().trim();
 
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     etEmail.setError("Email Required");
                     return;
                 }
-                if(password.isEmpty()){
+                if (password.isEmpty()) {
                     etPassword.setError("Password Required");
                     return;
                 }
-                if(password.length() < 8){
+                if (password.length() < 8) {
                     etPassword.setError("Password needs to be 8 characters or more");
                     return;
                 }
-                if(strAge.isEmpty()){
+                if (strAge.isEmpty()) {
                     etAge.setError("Age Required");
                     return;
                 }
@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 fbAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
                             FirebaseUser user = fbAuth.getCurrentUser();
                             user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -124,9 +124,9 @@ public class RegisterActivity extends AppCompatActivity {
                             });
 
                             Toast.makeText(RegisterActivity.this, "User Created Successfully", Toast.LENGTH_LONG).show();
-                            Intent i =  new Intent(getApplicationContext(), LoginActivity.class);
+                            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                             startActivity(i);
-                        }else{
+                        } else {
                             Toast.makeText(RegisterActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             pbRegister.setVisibility(View.INVISIBLE);
                         }

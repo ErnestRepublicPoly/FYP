@@ -1,6 +1,7 @@
 package sg.edu.rp.c346.round3.DetailsFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import sg.edu.rp.c346.round3.R;
 
 import android.content.Intent;
@@ -26,7 +27,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         Intent getInfo = getIntent();
-        int position = getInfo.getIntExtra("position",0);
+        int position = getInfo.getIntExtra("position", 0);
 
         ArrayList<String> spinnerChoices = new ArrayList<String>();
         spinnerChoices.add("Male");
@@ -41,7 +42,7 @@ public class InfoActivity extends AppCompatActivity {
         spnOption.setAdapter(aa);
 
         //Blood pressure
-        if (position == 0){
+        if (position == 0) {
             spnOption.setEnabled(false);
             //Text Information on Systolic and Diastolic
             tvInfo.setText("Systolic \nDiastolic");
@@ -49,7 +50,7 @@ public class InfoActivity extends AppCompatActivity {
             ivInfo.setImageResource(R.drawable.bpinfo);
         }
         //BMI
-        else if (position == 1){
+        else if (position == 1) {
             spnOption.setEnabled(false);
             tvInfo.setText("BMI weight ranges\n" +
                     "Less than 18.5 = Underweight\n" +
@@ -59,7 +60,7 @@ public class InfoActivity extends AppCompatActivity {
             ivInfo.setImageResource(R.drawable.bmiinfo);
         }
         //Body Fat
-        else if (position == 2){
+        else if (position == 2) {
             spnOption.setEnabled(false);
             tvInfo.setText("Body fat often gets a bad rap, but it serves an important purpose. Your body stores the fat from the foods you eat in deposits that can be used for energy, insulation, and protection. Everyone needs some fat to live and function. When too much body fat accumulates, however, it can lead to obesity and obesity-related diseases, like type 2 diabetes and heart disease.\n" +
                     "\n" +
@@ -68,9 +69,9 @@ public class InfoActivity extends AppCompatActivity {
             spnOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (spnOption.getSelectedItem().toString().equalsIgnoreCase("male")){
+                    if (spnOption.getSelectedItem().toString().equalsIgnoreCase("male")) {
                         ivInfo.setImageResource(R.drawable.malebodyfat);
-                    }else{
+                    } else {
                         ivInfo.setImageResource(R.drawable.femalebodyfat);
                     }
                 }
@@ -82,14 +83,14 @@ public class InfoActivity extends AppCompatActivity {
             });
         }
         //Quad Power
-        else if (position == 3){
+        else if (position == 3) {
             tvInfo.setText("");
             spnOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (spnOption.getSelectedItem().toString().equalsIgnoreCase("male")){
+                    if (spnOption.getSelectedItem().toString().equalsIgnoreCase("male")) {
                         ivInfo.setImageResource(R.drawable.malequadpower);
-                    }else{
+                    } else {
                         ivInfo.setImageResource(R.drawable.femalerackpull);
                     }
                 }
@@ -102,14 +103,14 @@ public class InfoActivity extends AppCompatActivity {
 
         }
         //Rack Pull
-        else if (position == 4){
+        else if (position == 4) {
             tvInfo.setText("");
             spnOption.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (spnOption.getSelectedItem().toString().equalsIgnoreCase("male")){
+                    if (spnOption.getSelectedItem().toString().equalsIgnoreCase("male")) {
                         ivInfo.setImageResource(R.drawable.malerackpull);
-                    }else{
+                    } else {
                         ivInfo.setImageResource(R.drawable.femalerackpull);
                     }
                 }
@@ -121,7 +122,7 @@ public class InfoActivity extends AppCompatActivity {
             });
         }
         //Agility
-        else if (position == 5){
+        else if (position == 5) {
 
         }
     }

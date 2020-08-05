@@ -45,15 +45,15 @@ public class LoginActivity extends AppCompatActivity {
         pbLogin.setVisibility(View.INVISIBLE);
         fbAuth = FirebaseAuth.getInstance();
 
-        if(fbAuth.getCurrentUser() != null){
-            Intent i =  new Intent(getApplicationContext(), Main2Activity.class);
+        if (fbAuth.getCurrentUser() != null) {
+            Intent i = new Intent(getApplicationContext(), Main2Activity.class);
             startActivity(i);
         }
 
         tvCreateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =  new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(i);
             }
         });
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         final String email = resetEmail.getText().toString();
 
-                        if(email.isEmpty()){
+                        if (email.isEmpty()) {
                             Toast.makeText(getApplicationContext(), "Email cannot be Empty", Toast.LENGTH_LONG).show();
                             return;
                         }
@@ -105,15 +105,15 @@ public class LoginActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
 
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     etEmail.setError("Email Required");
                     return;
                 }
-                if(password.isEmpty()){
+                if (password.isEmpty()) {
                     etPassword.setError("Password Required");
                     return;
                 }
-                if(password.length() < 8){
+                if (password.length() < 8) {
                     etPassword.setError("Password needs to be 8 characters or more");
                     return;
                 }
@@ -123,11 +123,11 @@ public class LoginActivity extends AppCompatActivity {
                 fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                            Intent i =  new Intent(getApplicationContext(), Main2Activity.class);
+                            Intent i = new Intent(getApplicationContext(), Main2Activity.class);
                             startActivity(i);
-                        }else{
+                        } else {
                             Toast.makeText(LoginActivity.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             pbLogin.setVisibility(View.INVISIBLE);
                         }

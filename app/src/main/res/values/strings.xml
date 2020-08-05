@@ -21,6 +21,6 @@
 
     <string-array name="Position">
         <item>student</item>
-        <item>staff</item>
+        <item>facilitator</item>
     </string-array>
 </resources>

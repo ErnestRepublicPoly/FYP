@@ -28,7 +28,7 @@ public class DetailsAdapter extends ArrayAdapter<InfoClass> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.details_info_design, parent, false);
 

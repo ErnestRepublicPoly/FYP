@@ -1,10 +1,13 @@
 package sg.edu.rp.c346.round3.GoalsFragment;
 
 import androidx.lifecycle.ViewModelProviders;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +16,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -61,7 +66,7 @@ public class GoalsFragment extends Fragment {
         db.collection("/User/" + a + "/Goals").document("Goals").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()) {
+                if (documentSnapshot.exists()) {
                     String fillAgility = String.valueOf(documentSnapshot.getDouble("agility"));
                     String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
                     String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
@@ -105,13 +110,13 @@ public class GoalsFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
+                try {
                     Double updatedAgility = Double.parseDouble(agility.getText().toString());
                     Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("agility", updatedAgility);
                     db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
-                }catch (NumberFormatException e){
-                    Toast.makeText(getContext(), "Agility needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e) {
+                    agility.setError("Agility needs to be a number.");
                 }
 
                 try {
@@ -119,8 +124,8 @@ public class GoalsFragment extends Fragment {
                     Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("quadPower", updatedQuadPower);
                     db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
-                }catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Quad Power needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e) {
+                    quadPower.setError("Quad Power needs to be a number.");
                 }
 
                 try {
@@ -128,8 +133,8 @@ public class GoalsFragment extends Fragment {
                     Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("rackPull", updatedRackPull);
                     db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
-                }catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Rack Pull needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e) {
+                    rackPull.setError("Rack Pull needs to be a number.");
                 }
 
                 try {
@@ -137,17 +142,19 @@ public class GoalsFragment extends Fragment {
                     Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("weight", updatedWeight);
                     db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
-                }catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Weight needs to be in Numerical values.", Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e) {
+                    weight.setError("Weight needs to be a number.");
                 }
 
                 try {
                     Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("date", d);
                     db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
-                }catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "Date is not set", Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e) {
+                    achieveDate.setError("Date is not set.");
                 }
+
+                Toast.makeText(getContext(), "Goals Updated", Toast.LENGTH_LONG).show();
             }
         });
         return root;

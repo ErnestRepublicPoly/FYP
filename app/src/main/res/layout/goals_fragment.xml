@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoalsFragment.GoalsFragment"
     android:background="#FFC0CB"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".GoalsFragment.GoalsFragment">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -19,8 +19,8 @@
     <LinearLayout
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/entry_white"
         android:layout_marginLeft="10dp"
+        android:background="@drawable/entry_white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
                 android:hint="Weight"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:padding="15dp"
                 android:textSize="15sp" />
 
@@ -75,7 +75,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
                 android:hint="Quad Power"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:padding="15dp"
                 android:textSize="15sp" />
 
@@ -104,7 +104,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
                 android:hint="Rack Pull"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:padding="15dp"
                 android:textSize="15sp" />
 
@@ -125,7 +125,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
                 android:hint="Agility"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:padding="15dp"
                 android:textSize="15sp" />
 

@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
         final FirebaseUser user = fbAuth.getCurrentUser();
         a = user.getUid();
 
-        if(!user.isEmailVerified()){
+        if (!user.isEmailVerified()) {
             tvVerification.setVisibility(View.VISIBLE);
         }
 

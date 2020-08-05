@@ -17,7 +17,7 @@ public class DataEntry implements Serializable {
     public DataEntry() {
     }
 
-    public DataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double Height, Date date ) {
+    public DataEntry(double SystolicPressure, double DiastolicPressure, double BodyFat, double QuadPower, double RackPull, double Agility, double Weight, double Height, Date date) {
         this.SystolicPressure = SystolicPressure;
         this.DiastolicPressure = DiastolicPressure;
         this.BodyFat = BodyFat;
