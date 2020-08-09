@@ -72,7 +72,7 @@ public class GoalsFragment extends Fragment {
                     String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
                     String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
                     String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
-                    Date d = documentSnapshot.getDate("date");
+                    d = documentSnapshot.getDate("date");
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                     String formatedDate = sdf.format(d);
                     achieveDate.setText("" + formatedDate);
@@ -111,50 +111,44 @@ public class GoalsFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Map<String, Object> saveData = new HashMap<String, Object>();
+
+                if(d == null){
+                    Toast.makeText(getContext(), "Date must be set", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 try {
                     Double updatedAgility = Double.parseDouble(agility.getText().toString());
-                    Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("agility", updatedAgility);
-                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
                 } catch (NumberFormatException e) {
                     agility.setError("Agility needs to be a number.");
                 }
 
                 try {
                     Double updatedQuadPower = Double.parseDouble(quadPower.getText().toString());
-                    Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("quadPower", updatedQuadPower);
-                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
                 } catch (NumberFormatException e) {
                     quadPower.setError("Quad Power needs to be a number.");
                 }
 
                 try {
                     Double updatedRackPull = Double.parseDouble(rackPull.getText().toString());
-                    Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("rackPull", updatedRackPull);
-                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
                 } catch (NumberFormatException e) {
                     rackPull.setError("Rack Pull needs to be a number.");
                 }
 
                 try {
                     Double updatedWeight = Double.parseDouble(weight.getText().toString());
-                    Map<String, Object> saveData = new HashMap<String, Object>();
                     saveData.put("weight", updatedWeight);
-                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
                 } catch (NumberFormatException e) {
                     weight.setError("Weight needs to be a number.");
                 }
 
-                try {
-                    Map<String, Object> saveData = new HashMap<String, Object>();
-                    saveData.put("date", d);
-                    db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
-                } catch (NumberFormatException e) {
-                    achieveDate.setError("Date is not set.");
-                }
-
+                saveData.put("date", d);
+                db.collection("/User/" + a + "/Goals").document("Goals").set(saveData, SetOptions.merge());
                 Toast.makeText(getContext(), "Goals Updated", Toast.LENGTH_LONG).show();
             }
         });
