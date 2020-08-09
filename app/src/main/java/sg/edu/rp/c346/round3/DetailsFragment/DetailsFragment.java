@@ -39,12 +39,12 @@ public class DetailsFragment extends Fragment {
 
 
         final ArrayList<InfoClass> currentInfo = new ArrayList<InfoClass>();
-        currentInfo.add(new InfoClass("Blood Pressure", R.drawable.bloodpressure));
-        currentInfo.add(new InfoClass("BMI", R.drawable.bmi));
-        currentInfo.add(new InfoClass("Body Fat", R.drawable.fat));
+        currentInfo.add(new InfoClass("Blood Pressure", R.drawable.dashboardheart));
+        currentInfo.add(new InfoClass("BMI", R.drawable.dashboardbmi));
+        currentInfo.add(new InfoClass("Body Fat", R.drawable.dashboardfat));
         currentInfo.add(new InfoClass("Quad Power", R.drawable.legcurl));
-        currentInfo.add(new InfoClass("Rack Pull", R.drawable.rackpull));
-        currentInfo.add(new InfoClass("Agility", R.drawable.agility));
+        currentInfo.add(new InfoClass("Rack Pull", R.drawable.dashboardrack));
+        currentInfo.add(new InfoClass("Agility", R.drawable.dashboardagility));
 
         aa = new DetailsAdapter(getContext(), R.layout.details_info_design, currentInfo);
         lv.setAdapter(aa);
