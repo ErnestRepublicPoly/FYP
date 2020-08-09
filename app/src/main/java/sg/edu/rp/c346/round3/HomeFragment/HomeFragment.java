@@ -1,23 +1,29 @@
 package sg.edu.rp.c346.round3.HomeFragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,6 +32,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import sg.edu.rp.c346.round3.DataClasses.DataEntry;
+import sg.edu.rp.c346.round3.HistoryDetails;
 import sg.edu.rp.c346.round3.R;
 
 
@@ -35,6 +42,7 @@ public class HomeFragment extends Fragment {
     String a = "";
     FirebaseFirestore db;
     TextView dashSystolic, dashDiastolic, dashFat, dashRack, dashQuad, dashAgility, dashWeight, dashHeight, tvVerification;
+    TextView tvAgilityGoalCheck;
     ArrayList<DataEntry> entries;
     FirebaseAuth fbAuth;
 
@@ -55,6 +63,8 @@ public class HomeFragment extends Fragment {
         dashHeight = root.findViewById(R.id.tvDashHeight);
         dashWeight = root.findViewById(R.id.tvDashWeight);
         tvVerification = root.findViewById(R.id.textViewVerification);
+        tvAgilityGoalCheck = root.findViewById(R.id.tvAgilityGoalCheck);
+
 
         fbAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = fbAuth.getCurrentUser();
@@ -81,40 +91,63 @@ public class HomeFragment extends Fragment {
                 });
             }
         });
-/*
+
+
+
         db.collection("/User/" + a + "/Data").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull final Task<QuerySnapshot> task) {
+
                 if (task.isSuccessful()) {
+
                     for (QueryDocumentSnapshot document : task.getResult()) {
+                        if (document.exists()){
+                            Date dates = document.getTimestamp("date").toDate();
 
-                        Date dates = document.getTimestamp("date").toDate();
+                            DataEntry newObj = new DataEntry(Double.parseDouble(document.get("systolicPressure").toString()),
+                                    Double.parseDouble(document.get("diastolicPressure").toString()),
+                                    Double.parseDouble(document.get("bodyFat").toString()),
+                                    Double.parseDouble(document.get("quadPower").toString()),
+                                    Double.parseDouble(document.get("rackPull").toString()),
+                                    Double.parseDouble(document.get("agility").toString()),
+                                    Double.parseDouble(document.get("weight").toString()),
+                                    Double.parseDouble(document.get("height").toString()),
+                                    dates
+                            );
+                            entries.add(newObj);
 
-                        DataEntry newObj = new DataEntry(Double.parseDouble(document.get("systolicPressure").toString()),
-                                Double.parseDouble(document.get("diastolicPressure").toString()),
-                                Double.parseDouble(document.get("bodyFat").toString()),
-                                Double.parseDouble(document.get("quadPower").toString()),
-                                Double.parseDouble(document.get("rackPull").toString()),
-                                Double.parseDouble(document.get("agility").toString()),
-                                Double.parseDouble(document.get("weight").toString()),
-                                Double.parseDouble(document.get("height").toString()),
-                                dates
-                        );
-                        entries.add(newObj);
+                            dashSystolic.setText("" + entries.get(entries.size()-1).getSystolicPressure());
+                            dashDiastolic.setText("" + entries.get(entries.size()-1).getDiastolicPressure());
+                            dashFat.setText("" + entries.get(entries.size()-1).getBodyFat());
+                            dashQuad.setText("" + entries.get(entries.size()-1).getQuadPower());
+                            dashRack.setText("" + entries.get(entries.size()-1).getRackPull());
+                            dashAgility.setText("" + entries.get(entries.size()-1).getAgility());
+                            dashHeight.setText("" + entries.get(entries.size()-1).getHeight());
+                            dashWeight.setText("" + entries.get(entries.size()-1).getWeight());
+
+                            db.collection("/User/" + a + "/Goals").document("Goals").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    if (documentSnapshot.exists()) {
+                                        Double GoalAgility = documentSnapshot.getDouble("agility");
+                                        String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
+                                        String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
+                                        String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
+
+                                        if (GoalAgility < entries.get(entries.size()-1).getAgility()){
+                                            tvAgilityGoalCheck.setText("You are " + (entries.get(entries.size()-1).getAgility() - GoalAgility) + " seconds off your goal!");
+                                        } else if (GoalAgility >= entries.get(entries.size()-1).getAgility()){
+                                            tvAgilityGoalCheck.setText("You have achieved your goal! Set a new goal?");
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                        }
                     }
-
-                    dashSystolic.setText("" + entries.get(entries.size()-1).getSystolicPressure());
-                    dashDiastolic.setText("" + entries.get(entries.size()-1).getDiastolicPressure());
-                    dashFat.setText("" + entries.get(entries.size()-1).getBodyFat());
-                    dashQuad.setText("" + entries.get(entries.size()-1).getQuadPower());
-                    dashRack.setText("" + entries.get(entries.size()-1).getRackPull());
-                    dashAgility.setText("" + entries.get(entries.size()-1).getAgility());
-                    dashHeight.setText("" + entries.get(entries.size()-1).getHeight());
-                    dashWeight.setText("" + entries.get(entries.size()-1).getWeight());
                 }
             }
         });
-*/
         return root;
     }
 }
