@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     String a = "";
     FirebaseFirestore db;
     TextView dashSystolic, dashDiastolic, dashFat, dashRack, dashQuad, dashAgility, dashWeight, dashHeight, tvVerification;
-    TextView tvAgilityGoalCheck;
+    TextView tvAgilityGoalCheck,tvQuadGoalCheck,tvRackGoalCheck,tvWeightGoalCheck;
     ArrayList<DataEntry> entries;
     FirebaseAuth fbAuth;
 
@@ -64,6 +64,9 @@ public class HomeFragment extends Fragment {
         dashWeight = root.findViewById(R.id.tvDashWeight);
         tvVerification = root.findViewById(R.id.textViewVerification);
         tvAgilityGoalCheck = root.findViewById(R.id.tvAgilityGoalCheck);
+        tvQuadGoalCheck = root.findViewById(R.id.tvQuadGoalCheck);
+        tvRackGoalCheck = root.findViewById(R.id.tvRackGoalCheck);
+        tvWeightGoalCheck = root.findViewById(R.id.tvWeightGoalCheck);
 
 
         fbAuth = FirebaseAuth.getInstance();
@@ -130,14 +133,34 @@ public class HomeFragment extends Fragment {
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     if (documentSnapshot.exists()) {
                                         Double GoalAgility = documentSnapshot.getDouble("agility");
-                                        String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
-                                        String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
-                                        String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
+                                        Double GoalQuadPower = documentSnapshot.getDouble("quadPower");
+                                        Double GoalRackPull = documentSnapshot.getDouble("rackPull");
+                                        Double GoalWeight = documentSnapshot.getDouble("weight");
 
+                                        //Check Goal for Agility and display Text Accordingly
                                         if (GoalAgility < entries.get(entries.size()-1).getAgility()){
                                             tvAgilityGoalCheck.setText("You are " + (entries.get(entries.size()-1).getAgility() - GoalAgility) + " seconds off your goal!");
                                         } else if (GoalAgility >= entries.get(entries.size()-1).getAgility()){
-                                            tvAgilityGoalCheck.setText("You have achieved your goal! Set a new goal?");
+                                            tvAgilityGoalCheck.setText("Goal Achieved! Set a new goal?");
+                                        }
+                                        //Check Goal for Quad and display Text Accordingly
+                                        if (GoalQuadPower > entries.get(entries.size()-1).getQuadPower()){
+                                            tvQuadGoalCheck.setText("You are " + (GoalQuadPower - entries.get(entries.size()-1).getQuadPower()) + " Kg off your goal!");
+                                        } else if (GoalQuadPower <= entries.get(entries.size()-1).getQuadPower()){
+                                            tvQuadGoalCheck.setText("Goal Achieved!\nSet a new goal?");
+                                        }
+                                        //Check Goal for Rack Pull and display Text Accordingly
+                                        if (GoalRackPull > entries.get(entries.size()-1).getRackPull()){
+                                            tvRackGoalCheck.setText("You are " + (GoalRackPull - entries.get(entries.size()-1).getRackPull()) + " Kg off your goal!");
+                                        } else if (GoalRackPull <= entries.get(entries.size()-1).getRackPull()){
+                                            tvRackGoalCheck.setText("Goal Achieved!\nSet a new goal?");
+                                        }
+                                        if (GoalWeight > entries.get(entries.size()-1).getWeight()){
+                                            tvWeightGoalCheck.setText((GoalWeight - entries.get(entries.size()-1).getWeight()) + " Kg to Goal");
+                                        } else if (GoalWeight < entries.get(entries.size()-1).getWeight()){
+                                            tvWeightGoalCheck.setText((entries.get(entries.size()-1).getWeight() - GoalWeight) + " Kg to Goal");
+                                        } else {
+                                            tvWeightGoalCheck.setText("Goal Achieved!");
                                         }
                                     }
                                 }
