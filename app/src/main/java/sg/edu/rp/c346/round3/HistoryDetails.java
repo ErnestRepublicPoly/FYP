@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import sg.edu.rp.c346.round3.DataClasses.DataEntry;
@@ -30,6 +32,10 @@ public class HistoryDetails extends AppCompatActivity {
 
         Intent i = getIntent();
         DataEntry a = (DataEntry) i.getSerializableExtra("data");
+
+        SimpleDateFormat sfd = new SimpleDateFormat("dd-MM-yyyy");
+        String format = sfd.format(a.getDate());
+        this.setTitle("Details of " + format);
 
         agilityHistory.setText(a.getAgility() + "");
         bodyFatHistory.setText(a.getBodyFat() + "%");

@@ -42,6 +42,7 @@ public class HistoryFragment extends Fragment {
     FirebaseFirestore db;
     FirebaseAuth fbAuth;
 
+
     public static HistoryFragment newInstance() {
         return new HistoryFragment();
     }

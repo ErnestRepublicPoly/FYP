@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -84,6 +85,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("verification", "Successful");
+                        Toast.makeText(getContext(),"Email Sent Successfully",Toast.LENGTH_SHORT).show();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {

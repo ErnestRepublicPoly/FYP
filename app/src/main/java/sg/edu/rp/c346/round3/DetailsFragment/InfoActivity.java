@@ -32,6 +32,9 @@ public class InfoActivity extends AppCompatActivity {
 
         wb = findViewById(R.id.webView);
 
+        wb.getSettings().setBuiltInZoomControls(true);
+        wb.getSettings().setDisplayZoomControls(false);
+
         //Blood pressure
         if (position == 0) {
             wb.loadUrl("file:///android_asset/BloodPressure.html");
