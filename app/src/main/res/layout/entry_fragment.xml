@@ -107,7 +107,7 @@
         android:layout_gravity="center"
         android:background="@color/colorPink"
         android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -293,7 +293,6 @@
         android:fontFamily="@font/leaguespartan_bold"
         android:backgroundTint="@color/colroPastalYello"
         android:id="@+id/buttonSubmit"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/S" />
