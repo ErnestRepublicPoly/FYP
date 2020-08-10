@@ -61,6 +61,8 @@ public class HistoryFragment extends Fragment {
         values = new ArrayList<>();
         entries = new ArrayList<>();
 
+
+
         db.collection("/User/" + a + "/Data").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull final Task<QuerySnapshot> task) {

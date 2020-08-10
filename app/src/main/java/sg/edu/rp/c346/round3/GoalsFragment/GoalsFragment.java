@@ -44,6 +44,10 @@ public class GoalsFragment extends Fragment {
     TextView achieveDate;
     Button submit;
     String a = "";
+    String fillAgility = "";
+    String fillQuadPower = "";
+    String fillRackPull = "";
+    String fillWeight = "";
 
     FirebaseFirestore db;
     FirebaseAuth fbAuth;
@@ -72,16 +76,30 @@ public class GoalsFragment extends Fragment {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
-                    String fillAgility = String.valueOf(documentSnapshot.getDouble("agility"));
-                    String fillQuadPower = String.valueOf(documentSnapshot.getDouble("quadPower"));
-                    String fillRackPull = String.valueOf(documentSnapshot.getDouble("rackPull"));
-                    String fillWeight = String.valueOf(documentSnapshot.getDouble("weight"));
+                    String a = String.valueOf(documentSnapshot.getDouble("agility"));
+                    String qp = String.valueOf(documentSnapshot.getDouble("quadPower"));
+                    String rp = String.valueOf(documentSnapshot.getDouble("rackPull"));
+                    String w = String.valueOf(documentSnapshot.getDouble("weight"));
+
+                    if (a.equalsIgnoreCase("null") == false) {
+                        fillAgility = a;
+                    }
+                    if(qp.equalsIgnoreCase("null") == false){
+                        fillQuadPower = qp;
+                    }
+                    if(rp.equalsIgnoreCase("null") == false){
+                        fillRackPull = rp;
+                    }
+                    if(w.equalsIgnoreCase("null") == false){
+                        fillWeight = w;
+                    }
+
                     d = documentSnapshot.getDate("date");
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                     String formatedDate = sdf.format(d);
                     achieveDate.setText("" + formatedDate);
-                    weight.setText("" + fillWeight);
-                    quadPower.setText("" + fillQuadPower);
+                    weight.setText(fillWeight);
+                    quadPower.setText(fillQuadPower);
                     rackPull.setText("" + fillRackPull);
                     agility.setText("" + fillAgility);
                 }
@@ -118,37 +136,29 @@ public class GoalsFragment extends Fragment {
 
                 Map<String, Object> saveData = new HashMap<String, Object>();
 
-                if(d == null){
+                if (d == null) {
                     Toast.makeText(getContext(), "Date must be set", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                try {
-                    Double updatedAgility = Double.parseDouble(agility.getText().toString());
+                if (agility.getText().toString().trim().isEmpty() == false) {
+                    Double updatedAgility = Double.parseDouble(agility.getText().toString().trim());
                     saveData.put("agility", updatedAgility);
-                } catch (NumberFormatException e) {
-                    agility.setError("Agility needs to be a number.");
                 }
 
-                try {
-                    Double updatedQuadPower = Double.parseDouble(quadPower.getText().toString());
+                if (quadPower.getText().toString().trim().isEmpty() == false) {
+                    Double updatedQuadPower = Double.parseDouble(quadPower.getText().toString().trim());
                     saveData.put("quadPower", updatedQuadPower);
-                } catch (NumberFormatException e) {
-                    quadPower.setError("Quad Power needs to be a number.");
                 }
 
-                try {
-                    Double updatedRackPull = Double.parseDouble(rackPull.getText().toString());
+                if (rackPull.getText().toString().trim().isEmpty() == false) {
+                    Double updatedRackPull = Double.parseDouble(rackPull.getText().toString().trim());
                     saveData.put("rackPull", updatedRackPull);
-                } catch (NumberFormatException e) {
-                    rackPull.setError("Rack Pull needs to be a number.");
                 }
 
-                try {
-                    Double updatedWeight = Double.parseDouble(weight.getText().toString());
+                if (weight.getText().toString().trim().isEmpty() == false) {
+                    Double updatedWeight = Double.parseDouble(weight.getText().toString().trim());
                     saveData.put("weight", updatedWeight);
-                } catch (NumberFormatException e) {
-                    weight.setError("Weight needs to be a number.");
                 }
 
                 saveData.put("date", d);

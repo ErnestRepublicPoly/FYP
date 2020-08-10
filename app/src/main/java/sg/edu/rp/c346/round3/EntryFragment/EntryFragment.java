@@ -41,6 +41,8 @@ public class EntryFragment extends Fragment {
     Button submit;
     String a = "";
     int count = 0;
+    double spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble;
+    Boolean checker;
 
     FirebaseFirestore db;
     CollectionReference dataRef;
@@ -88,38 +90,68 @@ public class EntryFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
+                checker = false;
+                Date c = Calendar.getInstance().getTime();
 
-                    Date c = Calendar.getInstance().getTime();
-
-                    double spDouble = Double.parseDouble(sp.getText().toString());
-                    double dpDouble = Double.parseDouble(dp.getText().toString());
-                    double bodyFatDouble = Double.parseDouble(bodyFat.getText().toString());
-                    double quadPowerDouble = Double.parseDouble(quadPower.getText().toString());
-                    double rackPullDouble = Double.parseDouble(rackPull.getText().toString());
-                    double agilityDouble = Double.parseDouble(agility.getText().toString());
-                    double weightDouble = Double.parseDouble(weight.getText().toString());
-                    double heightDouble = Double.parseDouble(height.getText().toString());
-                    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-                    count++;
-
-                    DataEntry de = new DataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble, c);
-                    Log.d("count", count + "");
-                   db.collection("/User/" + a + "/Data").document("Entry"+count).set(de).addOnSuccessListener(new OnSuccessListener<Void>() {
-                       @Override
-                       public void onSuccess(Void aVoid) {
-                           Toast.makeText(getContext(), "Entry Added Successfully", Toast.LENGTH_LONG).show();
-                       }
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(getContext(), "Failed to add entry ", Toast.LENGTH_LONG).show();
-                       }
-                   });
-
-                } catch (NumberFormatException e) {
-                    Toast.makeText(getContext(), "All Fields Have To Be Numbers", Toast.LENGTH_LONG).show();
+                if (sp.getText().toString().trim().isEmpty()) {
+                    sp.setError("Systolic Pressure is required");
+                    checker = true;
                 }
+                if (dp.getText().toString().trim().isEmpty()) {
+                    dp.setError("Diastolic Pressure is required");
+                    checker = true;
+                }
+                if (bodyFat.getText().toString().trim().isEmpty()) {
+                    bodyFat.setError("Body Fat is required");
+                    checker = true;
+                }
+                if (quadPower.getText().toString().trim().isEmpty()) {
+                    quadPower.setError("Quad Power is required");
+                    checker = true;
+                }
+                if (rackPull.getText().toString().trim().isEmpty()) {
+                    rackPull.setError("Rack Pull is required");
+                    checker = true;
+                }
+                if (agility.getText().toString().trim().isEmpty()) {
+                    agility.setError("Agility is required");
+                    checker = true;
+                }
+                if (weight.getText().toString().trim().isEmpty()) {
+                    weight.setError("Weight is required");
+                    checker = true;
+                }
+                if (height.getText().toString().trim().isEmpty()) {
+                    height.setError("Height is required");
+                    checker = true;
+                }
+                if(checker == true){
+                    return;
+                }
+
+                spDouble = Double.parseDouble(sp.getText().toString().trim());
+                dpDouble = Double.parseDouble(dp.getText().toString().trim());
+                bodyFatDouble = Double.parseDouble(bodyFat.getText().toString().trim());
+                quadPowerDouble = Double.parseDouble(quadPower.getText().toString().trim());
+                rackPullDouble = Double.parseDouble(rackPull.getText().toString().trim());
+                agilityDouble = Double.parseDouble(agility.getText().toString().trim());
+                weightDouble = Double.parseDouble(weight.getText().toString().trim());
+                heightDouble = Double.parseDouble(height.getText().toString().trim());
+                count++;
+
+                DataEntry de = new DataEntry(spDouble, dpDouble, bodyFatDouble, quadPowerDouble, rackPullDouble, agilityDouble, weightDouble, heightDouble, c);
+                Log.d("count", count + "");
+                db.collection("/User/" + a + "/Data").document("Entry" + count).set(de).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(), "Entry Added Successfully", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "Failed to add entry ", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
         return root;
