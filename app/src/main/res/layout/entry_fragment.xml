@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical"
     tools:context=".HomeFragment.HomeFragment">
 
@@ -22,7 +21,7 @@
     <LinearLayout
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
         android:background="@drawable/entry_white"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
@@ -105,7 +104,7 @@
     <LinearLayout
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
         android:background="@color/colorPink"
         android:orientation="vertical"
         android:layout_marginTop="20dp">
@@ -294,6 +293,7 @@
         android:fontFamily="@font/leaguespartan_bold"
         android:backgroundTint="@color/colroPastalYello"
         android:id="@+id/buttonSubmit"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/S" />
