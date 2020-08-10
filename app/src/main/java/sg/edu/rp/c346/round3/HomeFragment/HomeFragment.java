@@ -134,35 +134,51 @@ public class HomeFragment extends Fragment {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     if (documentSnapshot.exists()) {
-                                        Double GoalAgility = documentSnapshot.getDouble("agility");
-                                        Double GoalQuadPower = documentSnapshot.getDouble("quadPower");
-                                        Double GoalRackPull = documentSnapshot.getDouble("rackPull");
-                                        Double GoalWeight = documentSnapshot.getDouble("weight");
+                                        
+                                        if (documentSnapshot.getDouble("agility") != null){
+                                            Double GoalAgility = documentSnapshot.getDouble("agility");
+                                            if (GoalAgility < entries.get(entries.size()-1).getAgility()){
+                                                tvAgilityGoalCheck.setText("You are " + (entries.get(entries.size()-1).getAgility() - GoalAgility) + " seconds off your goal!");
+                                            } else if (GoalAgility >= entries.get(entries.size()-1).getAgility()){
+                                                tvAgilityGoalCheck.setText("Goal Achieved! Set a new goal?");
+                                            }
+                                            //Check Goal for Agility and display Text Accordingly
+                                            if (GoalAgility < entries.get(entries.size()-1).getAgility()){
+                                                tvAgilityGoalCheck.setText("You are " + (entries.get(entries.size()-1).getAgility() - GoalAgility) + " seconds off your goal!");
+                                            } else if (GoalAgility >= entries.get(entries.size()-1).getAgility()){
+                                                tvAgilityGoalCheck.setText("Goal Achieved! Set a new goal?");
+                                            }
+                                        }
 
-                                        //Check Goal for Agility and display Text Accordingly
-                                        if (GoalAgility < entries.get(entries.size()-1).getAgility()){
-                                            tvAgilityGoalCheck.setText("You are " + (entries.get(entries.size()-1).getAgility() - GoalAgility) + " seconds off your goal!");
-                                        } else if (GoalAgility >= entries.get(entries.size()-1).getAgility()){
-                                            tvAgilityGoalCheck.setText("Goal Achieved! Set a new goal?");
+                                        if (documentSnapshot.getDouble("quadPower") != null){
+                                            Double GoalQuadPower = documentSnapshot.getDouble("quadPower");
+                                            //Check Goal for Quad and display Text Accordingly
+                                            if (GoalQuadPower > entries.get(entries.size()-1).getQuadPower()){
+                                                tvQuadGoalCheck.setText("You are " + (GoalQuadPower - entries.get(entries.size()-1).getQuadPower()) + " Kg off your goal!");
+                                            } else if (GoalQuadPower <= entries.get(entries.size()-1).getQuadPower()){
+                                                tvQuadGoalCheck.setText("Goal Achieved!\nSet a new goal?");
+                                            }
                                         }
-                                        //Check Goal for Quad and display Text Accordingly
-                                        if (GoalQuadPower > entries.get(entries.size()-1).getQuadPower()){
-                                            tvQuadGoalCheck.setText("You are " + (GoalQuadPower - entries.get(entries.size()-1).getQuadPower()) + " Kg off your goal!");
-                                        } else if (GoalQuadPower <= entries.get(entries.size()-1).getQuadPower()){
-                                            tvQuadGoalCheck.setText("Goal Achieved!\nSet a new goal?");
+
+                                        if (documentSnapshot.getDouble("rackPull") != null){
+                                            Double GoalRackPull = documentSnapshot.getDouble("rackPull");
+                                            //Check Goal for Rack Pull and display Text Accordingly
+                                            if (GoalRackPull > entries.get(entries.size()-1).getRackPull()){
+                                                tvRackGoalCheck.setText("You are " + (GoalRackPull - entries.get(entries.size()-1).getRackPull()) + " Kg off your goal!");
+                                            } else if (GoalRackPull <= entries.get(entries.size()-1).getRackPull()){
+                                                tvRackGoalCheck.setText("Goal Achieved!\nSet a new goal?");
+                                            }
                                         }
-                                        //Check Goal for Rack Pull and display Text Accordingly
-                                        if (GoalRackPull > entries.get(entries.size()-1).getRackPull()){
-                                            tvRackGoalCheck.setText("You are " + (GoalRackPull - entries.get(entries.size()-1).getRackPull()) + " Kg off your goal!");
-                                        } else if (GoalRackPull <= entries.get(entries.size()-1).getRackPull()){
-                                            tvRackGoalCheck.setText("Goal Achieved!\nSet a new goal?");
-                                        }
-                                        if (GoalWeight > entries.get(entries.size()-1).getWeight()){
-                                            tvWeightGoalCheck.setText((GoalWeight - entries.get(entries.size()-1).getWeight()) + " Kg to Goal");
-                                        } else if (GoalWeight < entries.get(entries.size()-1).getWeight()){
-                                            tvWeightGoalCheck.setText((entries.get(entries.size()-1).getWeight() - GoalWeight) + " Kg to Goal");
-                                        } else {
-                                            tvWeightGoalCheck.setText("Goal Achieved!");
+
+                                        if (documentSnapshot.getDouble("weight") != null){
+                                            Double GoalWeight = documentSnapshot.getDouble("weight");
+                                            if (GoalWeight > entries.get(entries.size()-1).getWeight()){
+                                                tvWeightGoalCheck.setText((GoalWeight - entries.get(entries.size()-1).getWeight()) + " Kg to Goal");
+                                            } else if (GoalWeight < entries.get(entries.size()-1).getWeight()){
+                                                tvWeightGoalCheck.setText((entries.get(entries.size()-1).getWeight() - GoalWeight) + " Kg to Goal");
+                                            } else {
+                                                tvWeightGoalCheck.setText("Goal Achieved!");
+                                            }
                                         }
                                     }
                                 }
