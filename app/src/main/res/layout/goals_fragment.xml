@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC0CB"
     android:orientation="vertical"
     tools:context=".GoalsFragment.GoalsFragment">
 
@@ -11,12 +10,15 @@
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/rockwen"
         android:text="@string/Goals"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         android:textSize="24sp" />
 
     <LinearLayout
+        android:layout_marginTop="30dp"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -26,24 +28,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/colorBG">
 
             <TextView
                 android:id="@+id/textViewW"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="22dp"
-                android:text="Weight"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Weight:"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/editTextWG"
-                android:layout_width="match_parent"
+                android:layout_width="244dp"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="45dp"
+                android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
@@ -57,23 +63,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/colorPink">
 
             <TextView
                 android:id="@+id/textViewQuadPower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="22dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Quad Power"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/editTextQPG"
-                android:layout_width="match_parent"
+                android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
+                android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
                 android:hint="Quad Power"
                 android:inputType="numberDecimal"
                 android:padding="15dp"
@@ -84,25 +97,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/colorBG">
 
             <TextView
                 android:id="@+id/textViewRackPull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"
+                android:layout_gravity="center"
                 android:text="Rack Pull"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/editTextRPG"
-                android:layout_width="125dp"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
+                android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
                 android:hint="Rack Pull"
                 android:inputType="numberDecimal"
                 android:padding="15dp"
@@ -113,13 +131,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Agility"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/editTextAG"
-                android:layout_width="125dp"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
@@ -134,13 +155,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/colroPastalYello">
 
             <TextView
                 android:id="@+id/textViewAchieve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/DTAB"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/poppins_bold"
                 android:textSize="14sp" />
 
             <TextView
@@ -149,7 +174,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:text=" Click Here to Set Date"
+                android:text="@string/date"
+                android:textColor="@color/colorPastalYello2"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/leaguespartan_bold"
                 android:textAlignment="center"
                 android:textSize="14sp" />
 
@@ -159,7 +187,11 @@
 
     <Button
         android:id="@+id/buttonGoalSubmit"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@color/colroPastalYello"
+        android:fontFamily="@font/poppins_bold"
         android:layout_height="wrap_content"
         android:text="Edit"
         android:textSize="14sp" />

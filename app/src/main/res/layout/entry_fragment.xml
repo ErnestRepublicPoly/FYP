@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC0CB"
+
     android:orientation="vertical"
     tools:context=".HomeFragment.HomeFragment">
 
@@ -12,29 +12,35 @@
         android:id="@+id/textViewMeasurementsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/rockwen"
+        android:layout_marginTop="20dp"
         android:text="@string/M"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:background="@drawable/entry_white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorBG">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/textViewHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Height"
                 android:textSize="16sp" />
 
@@ -42,7 +48,8 @@
                 android:id="@+id/textViewWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
+                android:layout_marginLeft="137dp"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Weight"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -88,17 +95,20 @@
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="@string/EYTRB"
         android:textAlignment="center"
+        android:fontFamily="@font/rockwen"
         android:textAllCaps="false"
-        android:textSize="24sp" />
+        android:textSize="27sp" />
 
     <LinearLayout
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:background="@drawable/entry_white"
-        android:orientation="vertical">
+        android:background="@color/colorPink"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,16 +119,18 @@
                 android:id="@+id/textViewSP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="11dp"
                 android:text="Systolic Pressure"
+                android:fontFamily="@font/poppins_bold"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewDiastolicPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="75dp"
+                android:layout_marginLeft="51dp"
                 android:text="Diastolic Pressure"
+                android:fontFamily="@font/poppins_bold"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -166,14 +178,18 @@
                 android:id="@+id/textViewBodyFat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Body Fat" />
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Body Fat"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/textViewQuadPower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="140dp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginLeft="120dp"
+                android:textSize="16dp"
                 android:text="Quad Power" />
 
         </LinearLayout>
@@ -222,14 +238,18 @@
                 android:id="@+id/textViewAgility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="16sp"
                 android:text="Agility" />
 
             <TextView
                 android:id="@+id/textViewRackPull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="160dp"
+                android:layout_marginLeft="140dp"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="16sp"
                 android:text="Rack Pull" />
         </LinearLayout>
 
@@ -271,6 +291,8 @@
     </LinearLayout>
 
     <Button
+        android:fontFamily="@font/leaguespartan_bold"
+        android:backgroundTint="@color/colroPastalYello"
         android:id="@+id/buttonSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

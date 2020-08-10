@@ -3,11 +3,14 @@ package sg.edu.rp.c346.round3.GoalsFragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +61,7 @@ public class GoalsFragment extends Fragment {
         a = user.getUid();
 
         achieveDate = root.findViewById(R.id.textViewDate);
+
         weight = root.findViewById(R.id.editTextWG);
         quadPower = root.findViewById(R.id.editTextQPG);
         rackPull = root.findViewById(R.id.editTextRPG);

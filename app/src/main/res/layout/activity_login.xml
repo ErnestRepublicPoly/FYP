@@ -8,64 +8,73 @@
     android:padding="10sp"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="RP HealthZone"
-        android:textAlignment="center"
-        android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo" />
+
+
 
     <EditText
         android:id="@+id/editTextLoginEmail"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:layout_marginTop="100dp"
+        android:drawableLeft="@drawable/loginicon1"
         android:ems="10"
         android:hint="Email"
+        android:fontFamily="@font/comfortaa_light"
+        android:backgroundTint="@color/colorBG"
+        android:textSize="15sp"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextLoginPW"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:layout_marginTop="35dp"
         android:ems="10"
+        android:drawableLeft="@drawable/loginicon2"
+        android:fontFamily="@font/comfortaa_light"
+        android:backgroundTint="@color/colorPink"
+        android:textSize="15sp"
         android:hint="Password"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="@color/colorBG"
+        android:layout_width="150dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
+        android:fontFamily="@font/poppins_bold"
         android:text="Login" />
 
     <TextView
         android:id="@+id/textViewCreateAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:text="Create New Account"
+        android:layout_marginTop="30dp"
+        android:text="Sign Up"
+        android:fontFamily="@font/poppins_semibold"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/textViewForgetPW"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:text="Forget Password"
+        android:text="Forgot Password?"
+        android:fontFamily="@font/poppins_semibold"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
     <ProgressBar
         android:id="@+id/progressBarLogin"

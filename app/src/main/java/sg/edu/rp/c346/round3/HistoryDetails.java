@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import sg.edu.rp.c346.round3.DataClasses.DataEntry;
 
 public class HistoryDetails extends AppCompatActivity {
-    TextView agilityHistory, bodyFatHistory, quadPowerHistory, rackPullHistory, heightHistory, weightHistory, bloodPressureHistory, dateHistory;
+    TextView agilityHistory, bodyFatHistory, quadPowerHistory, rackPullHistory, heightHistory, weightHistory, sbloodPressureHistory,dbloodPressureHistory, dateHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +24,21 @@ public class HistoryDetails extends AppCompatActivity {
         heightHistory = findViewById(R.id.textViewHistoryH);
         weightHistory = findViewById(R.id.textViewHistoryW);
         dateHistory = findViewById(R.id.textViewHistoryD);
+        sbloodPressureHistory = findViewById(R.id.textViewBloodPressure);
+        dbloodPressureHistory = findViewById(R.id.textViewBloodPressure2);
+
 
         Intent i = getIntent();
         DataEntry a = (DataEntry) i.getSerializableExtra("data");
 
         agilityHistory.setText(a.getAgility() + "");
-        bodyFatHistory.setText(a.getBodyFat() + "");
-        quadPowerHistory.setText(a.getQuadPower() + "");
-        rackPullHistory.setText(a.getRackPull() + "");
-        heightHistory.setText(a.getHeight() + "");
-        weightHistory.setText(a.getWeight() + "");
+        bodyFatHistory.setText(a.getBodyFat() + "%");
+        quadPowerHistory.setText(a.getQuadPower() + "kg");
+        rackPullHistory.setText(a.getRackPull() + "kg");
+        heightHistory.setText(a.getHeight() + "cm");
+        weightHistory.setText(a.getWeight() + "kg");
         dateHistory.setText(a.getDate() + "");
+        sbloodPressureHistory.setText(a.getSystolicPressure() + "mmHg");
+        dbloodPressureHistory.setText(a.getDiastolicPressure() + "mmHg");
     }
 }
