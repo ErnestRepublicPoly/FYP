@@ -129,7 +129,7 @@ public class HomeFragment extends Fragment {
                             dashAgility.setText("" + entries.get(entries.size()-1).getAgility());
                             dashHeight.setText("" + entries.get(entries.size()-1).getHeight());
                             dashWeight.setText("" + entries.get(entries.size()-1).getWeight());
-
+/*
                             db.collection("/User/" + a + "/Goals").document("Goals").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment {
                                     }
                                 }
                             });
-
+*/
                         } else {
                         }
                     }
